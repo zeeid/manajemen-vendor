@@ -34,7 +34,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
-$routes->get('/', 'Pages::index');
+// $routes->get('/', 'Pages::index');
+$routes->get('/', 'Dashboard\Home::index');
+
+
+$routes->post('/api/menu', 'Api\Menu::index');
+$routes->post('/api/vendor/simpan', 'Api\Vendor::simpan');
 
 // ========= SETTING ROUTE ===========
 // $routes->METODE('/ALAMAT', 'CONTROLLER::METHOT FUNGSI');
