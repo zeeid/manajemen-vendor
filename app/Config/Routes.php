@@ -40,6 +40,9 @@ $routes->get('/login', 'Auth::index');
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard\Home::index');
 
+
+$routes->get('/testing', 'Api\Pembayaran::testmodel');
+
 // === API LOGIN ====
 $routes->post('/api/auth/login', 'Auth::login');
 
@@ -48,6 +51,12 @@ $routes->post('/api/menu', 'Api\Menu::index');
 $routes->post('/api/vendor/simpan', 'Api\Vendor::simpan');
 $routes->post('/api/vendor/listvendor', 'Api\Vendor::listvendor');
 $routes->post('/api/vendor/hapusvendor', 'Api\Vendor::hapusvendor');
+
+// ==== PEMBAYARAN VENDOR ======
+$routes->post('/api/pembayaran/cek-terbayar', 'Api\Pembayaran::cekterbayar');
+$routes->post('/api/pembayaran/bayarvendor', 'Api\Pembayaran::bayarvendor');
+$routes->post('/api/pembayaran/listbayar', 'Api\Pembayaran::listbayar');
+
 
 
 

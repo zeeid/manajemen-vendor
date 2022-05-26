@@ -201,7 +201,12 @@
                 $("#item_b2").text('')
                 $("#konten").html(hasil)
                 
-            }
+            },
+			error: function(xhr) { // if error occured
+				alert("status : \n"+xhr.statusText +"\n\n Response: \n\n"+ xhr.responseText);
+				// $(placeholder).append(xhr.statusText + xhr.responseText);
+				// $(placeholder).removeClass('loading');
+			},
         });
     }
 
@@ -228,7 +233,12 @@
                 $("#item_b2").text(menu)
                 $("#konten").html(hasil)
                 
-            }
+            },
+			error: function(xhr) { // if error occured
+				alert("status : \n"+xhr.statusText +"\n\n Response: \n\n"+ xhr.responseText);
+				// $(placeholder).append(xhr.statusText + xhr.responseText);
+				// $(placeholder).removeClass('loading');
+			},
         });
     }
 </script>

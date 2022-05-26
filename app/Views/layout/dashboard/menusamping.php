@@ -37,7 +37,7 @@
                     <a class="nav-link " onclick="menu('Vendor')"><span class="pcoded-micon"><i class="fa fa-users"></i></span><span class="pcoded-mtext">Kelola Vendor</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " onclick="menu('Pemesanan')"><span class="pcoded-micon"><i class="fa fa-cutlery"></i></span><span class="pcoded-mtext">Transaksi Pemesanan</span></a>
+                    <a class="nav-link " onclick="menu('Pembayaran')"><span class="pcoded-micon"><i class="fa fa-cutlery"></i></span><span class="pcoded-mtext">Pembayaran Vendor</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " onclick="menu('Laporan')"><span class="pcoded-micon"><i class="fa fa-book"></i></span><span class="pcoded-mtext">Laporan Transaksi</span></a>

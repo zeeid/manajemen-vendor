@@ -36,12 +36,15 @@ class Vendor extends BaseController
             ->update();
             
         }else{
+            $saiki          = date('Y-m-d H:i:s');
+            $kode_vendor    = strtotime($saiki);
 
             $simpan = $this->VendorModel->save([
                 'jenis_vendor'      => $this->request->getVar('jenis_vendor'),
                 'nama_vendor'       => $this->request->getVar('nama_vendor'),
                 'harga_vendor'      => $this->request->getVar('harga_vendor'),
                 'kode_pasangan'     => $kode_pasangan,
+                'kode_vendor'       => $kode_vendor,
             ]);
         }
 
