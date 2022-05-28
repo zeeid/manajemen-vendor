@@ -56,6 +56,7 @@ $routes->post('/api/vendor/hapusvendor', 'Api\Vendor::hapusvendor');
 $routes->post('/api/pembayaran/cek-terbayar', 'Api\Pembayaran::cekterbayar');
 $routes->post('/api/pembayaran/bayarvendor', 'Api\Pembayaran::bayarvendor');
 $routes->post('/api/pembayaran/listbayar', 'Api\Pembayaran::listbayar');
+$routes->post('/api/pembayaran/hapus-listbayar', 'Api\Pembayaran::hapusbayaran');
 
 
 

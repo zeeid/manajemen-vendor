@@ -102,7 +102,7 @@
         getPembayaran()
     });
     
-    function hapus_vendor(id) {
+    function hapus_pembayaranx(id) {
 
         swal({
             title: "Apakah Anda Yakin?",
@@ -115,7 +115,7 @@
             if (willDelete) {
                 $.ajax({
                     type: "POST",
-                    url: "api/vendor/hapusvendor",
+                    url: "api/pembayaran/hapus-listbayar",
                     data: "kunciku="+kunciku+"&id="+id,
                     beforeSend: function() {
                         toastr["info"]("Mohon Tunggu..", "Loading")
@@ -142,7 +142,7 @@
                         // Remove current toasts using animation
                         toastr.remove()
                         toastr.clear()
-                        menu('Vendor')
+                        menu('Pembayaran')
                     },
                     error: function(xhr) { // if error occured
                         // $("#debug").html(xhr)

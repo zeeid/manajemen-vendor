@@ -115,6 +115,7 @@ class Pembayaran extends BaseController
         
         // $select = $this->PembayaranModel->where('kode_pasangan', $kode_pasangan)->findAll();
         $select  = $this->db->table('pembayaran_vendor')
+        ->select('pembayaran_vendor.id AS id_pembayaran, pembayaran_vendor.*, vendor.*')
         ->where('pembayaran_vendor.kode_pasangan', $kode_pasangan)
         ->join('vendor', 'vendor.kode_vendor = pembayaran_vendor.kode_vendor')
         ->orderBy('tgl_bayar', 'DESC')
@@ -130,6 +131,46 @@ class Pembayaran extends BaseController
         // dd($data['listbayar']);
 
         return view('dashboard/tabel/tabel_pembayaran',$data);
+    }
+
+    public function hapusbayaran(){
+        $kode_pasangan = $this->session->get('kode_pasangan');
+        $id = $this->request->getVar('id');
+
+        if ($kode_pasangan != '' || $kode_pasangan != null) {
+            // cek dulu ada ngk
+            $kuerinya = "SELECT * from pembayaran_vendor WHERE kode_pasangan='$kode_pasangan' AND id='$id'";
+            $cek = $this->db->query($kuerinya)->getNumRows();
+
+            if ($cek > 0) {
+                $hapus = $this->PembayaranModel
+                ->where('kode_pasangan', $kode_pasangan)
+                ->where('id', $id)
+                ->delete();
+
+                if ($hapus == 1) {
+                    $response = array(
+                        'status'    => 200, 
+                        'pesan'     => 'Berhasil menghapus vendor', 
+                    );
+                }else{
+                    $response = array(
+                        'status'    => 201, 
+                        'pesan'     => 'Gagal menghapus vendor', 
+                    );
+                    
+                }
+            }else{
+                $response = array(
+                    'status'    => 201, 
+                    'pesan'     => 'Pembayaran Vendor Tidak ditemukan untuk dihapus', 
+                    'kueri'     => $kuerinya, 
+                );
+
+            }
+
+            return json_encode($response);
+        }
     }
 
 }

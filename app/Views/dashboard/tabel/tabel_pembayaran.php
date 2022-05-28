@@ -21,7 +21,7 @@
             <tr>
                 <td><?= $no++; ?></td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-sm rounded" onclick="hapus_vendor('<?=$key['id']?>')">Hapus</button>
+                    <button type="button" class="btn btn-danger btn-sm rounded" onclick="hapus_pembayaranx('<?=$key['id_pembayaran']?>')">Hapus</button>
                     <!-- <button type="button" class="btn btn-warning btn-sm" onclick="fmenu('Tambah Pembayaran Vendor','<?=$key['id']?>')">Edit</button> -->
                 </td>
                 <td><?= $key['nama_vendor']?></td>
