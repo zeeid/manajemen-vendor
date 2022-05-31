@@ -118,7 +118,7 @@ class Pembayaran extends BaseController
         ->select('pembayaran_vendor.id AS id_pembayaran, pembayaran_vendor.*, vendor.*')
         ->where('pembayaran_vendor.kode_pasangan', $kode_pasangan)
         ->join('vendor', 'vendor.kode_vendor = pembayaran_vendor.kode_vendor')
-        ->orderBy('tgl_bayar', 'DESC')
+        ->orderBy('pembayaran_vendor.created_at', 'DESC')
         ->get()
         ->getResultArray();
 

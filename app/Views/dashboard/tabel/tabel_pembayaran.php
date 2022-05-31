@@ -8,8 +8,8 @@
             <th>No</th>
             <th>AKSI</th>
             <th>Nama Vendor</th>
-            <th>Tanggal Bayar</th>
             <th>Jumlah Bayar</th>
+            <th>Tanggal Bayar</th>
             <th>diInput Oleh</th>
         </tr>
     </thead>
@@ -25,7 +25,7 @@
                     <!-- <button type="button" class="btn btn-warning btn-sm" onclick="fmenu('Tambah Pembayaran Vendor','<?=$key['id']?>')">Edit</button> -->
                 </td>
                 <td><?= $key['nama_vendor']?></td>
-                <td><?= $key['jml_bayar'] ?></td>
+                <td style="text-align: right;"><?= number_format($key['jml_bayar']) ?></td>
                 <td><?= $key['tgl_bayar'] ?></td>
                 <td><?= $key['di_input_oleh'] ?></td>
             </tr>

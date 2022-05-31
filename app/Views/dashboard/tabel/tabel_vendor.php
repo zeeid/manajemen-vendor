@@ -25,7 +25,7 @@
                 </td>
                 <td><?= $key['nama_vendor'] ?></td>
                 <td><?= $key['jenis_vendor'] ?></td>
-                <td><?= $key['harga_vendor'] ?></td>
+                <td style="text-align: right;"><?= number_format($key['harga_vendor']) ?></td>
             </tr>
         <?php
             }

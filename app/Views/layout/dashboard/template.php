@@ -183,6 +183,8 @@
 
 <script>
 	function menu(menu) {
+	    $(".pcoded-navbar").removeClass("mob-open")
+	    
 		$('#notifnya').remove(); 
 		var kunciku = $("#kunciku").val()
         $.ajax({
@@ -211,6 +213,7 @@
     }
 
     function fmenu(menu,id=false) {
+        
 		$('#notifnya').remove(); 
 		if (id!=false) {
 			var data = "menu="+menu+"&id="+id
