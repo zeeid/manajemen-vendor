@@ -15,8 +15,8 @@
     <?php 
         // dd($datavendor);
         foreach ($datavendor as $key) {
-            // echo $key['nama_vendor'];
             $sisabayar = $key['harga_vendor']-$key['totalbayar'];
+            // echo $key['nama_vendor'];
             ?>
                 <div class="col-xl-4 col-md-6">
                     <div class="card">
@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>Sisa</td>
                                     <td>:</td>
-                                    <td>Rp. <?= number_format($sisabayar); ?></td>
+                                    <td>Rp. <?= number_format($key['harga_vendor']-$key['totalbayar']); ?></td>
                                 </tr>
                             </table>
                             <!-- <canvas id="chart-bar-1" style="width: 100%; height: 300px"></canvas> -->

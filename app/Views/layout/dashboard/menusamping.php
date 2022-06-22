@@ -42,6 +42,9 @@
                 <li class="nav-item">
                     <a class="nav-link " onclick="menu('Laporan')"><span class="pcoded-micon"><i class="fa fa-book"></i></span><span class="pcoded-mtext">Laporan Transaksi</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " onclick="menu('Wish List Seserahan')"><span class="pcoded-micon"><i class="fa fa-shopping-cart"></i></span><span class="pcoded-mtext">Wish List Seserahan</span></a>
+                </li>
             </ul>
             
             <ul class="nav pcoded-inner-navbar " style="display: none;">

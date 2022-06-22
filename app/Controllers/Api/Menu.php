@@ -4,15 +4,20 @@ namespace App\Controllers\Api; //Nama Folder
 
 use App\Models\VendorModel;
 use App\Models\PembayaranModel;
+use App\Models\SeserahanModel;
+
 use App\Controllers\BaseController;
 
 class Menu extends BaseController
 {
     protected $VendorModel;
     protected $PembayaranModel;
+    protected $SeserahanModel;
+    
     public function __construct(){
         $this->VendorModel = new VendorModel();
         $this->PembayaranModel = new PembayaranModel();
+        $this->SeserahanModel = new SeserahanModel();
     }
 
 
@@ -98,6 +103,28 @@ class Menu extends BaseController
             ];
             return view('dashboard/pembayaran_vendor_form', $data);
         }
+        elseif ($menunya == 'Wish List Seserahan') {
+            
+            $data = [
+                'judul' => $menunya
+            ];
+            return view('dashboard/seserahan', $data);
+        }
+        elseif ($menunya == 'Tambah Wish List Seserahan') {
+            
+            $kode_pasangan = $this->session->get('kode_pasangan');
+            $id = $this->request->getVar('id');
+            
+            $listseserahan = $this->SeserahanModel->where('kode_pasangan', $kode_pasangan)
+            ->where('id', $id)
+            ->first();
+            
+            $data = [
+                'judul'      => $menunya,
+                'listseserahan' => $listseserahan,
+            ];
+            return view('dashboard/seserahan_form', $data);
+        }
         else{
             // throw new \CodeIgniter\Exceptions\PageNotFoundException('Menu tidak ditemukan !');
             $data = [
@@ -106,7 +133,8 @@ class Menu extends BaseController
                 'pesan'     => 'Menu Tidak ditemukan !',
             ];
 
-            dd($data);
+            echo json_encode($data);
+            die();
         }
     }
 }

@@ -52,12 +52,18 @@ $routes->post('/api/vendor/simpan', 'Api\Vendor::simpan');
 $routes->post('/api/vendor/listvendor', 'Api\Vendor::listvendor');
 $routes->post('/api/vendor/hapusvendor', 'Api\Vendor::hapusvendor');
 
+// ===== SESERAHAN ========
+$routes->post('/api/seserahan/simpan', 'Api\Seserahan::simpan');
+$routes->post('/api/seserahan/hapusvendor', 'Api\Seserahan::hapusseserahan');
+
 // ==== PEMBAYARAN VENDOR ======
 $routes->post('/api/pembayaran/cek-terbayar', 'Api\Pembayaran::cekterbayar');
 $routes->post('/api/pembayaran/bayarvendor', 'Api\Pembayaran::bayarvendor');
 $routes->post('/api/pembayaran/listbayar', 'Api\Pembayaran::listbayar');
 $routes->post('/api/pembayaran/hapus-listbayar', 'Api\Pembayaran::hapusbayaran');
 
+
+// ============= UNDANGAN =============
 
 
 
