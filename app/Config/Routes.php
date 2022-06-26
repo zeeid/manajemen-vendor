@@ -63,9 +63,6 @@ $routes->post('/api/pembayaran/listbayar', 'Api\Pembayaran::listbayar');
 $routes->post('/api/pembayaran/hapus-listbayar', 'Api\Pembayaran::hapusbayaran');
 
 
-// ============= UNDANGAN =============
-
-
 
 
 
