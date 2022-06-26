@@ -86,12 +86,12 @@
 
                 $(".listseserahannya").html(hasil)
                 
-                // $('#table-style-hover').DataTable({
-                //     dom: 'Bfrtip',
-                //     buttons: [
-                //         'copy', 'csv', 'excel', 'pdf', 'print'
-                //     ]
-                // });
+                $('#table-style-hover').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
             },
             error: function(xhr) { // if error occured
                 $("#debug").html(xhr)

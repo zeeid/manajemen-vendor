@@ -62,7 +62,8 @@ $routes->post('/api/pembayaran/bayarvendor', 'Api\Pembayaran::bayarvendor');
 $routes->post('/api/pembayaran/listbayar', 'Api\Pembayaran::listbayar');
 $routes->post('/api/pembayaran/hapus-listbayar', 'Api\Pembayaran::hapusbayaran');
 
-
+// ==== SETTING UNDANGAN =====
+$routes->post('/api/undangan/setting_undangan', 'Api\Undangan::setting_undangan');
 
 
 

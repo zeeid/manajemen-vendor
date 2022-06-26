@@ -5,7 +5,7 @@ namespace App\Controllers\Api; //Nama Folder
 use App\Models\VendorModel;
 use App\Models\PembayaranModel;
 use App\Models\SeserahanModel;
-
+use App\Models\UndanganModel;
 use App\Controllers\BaseController;
 
 class Menu extends BaseController
@@ -13,11 +13,14 @@ class Menu extends BaseController
     protected $VendorModel;
     protected $PembayaranModel;
     protected $SeserahanModel;
+    protected $UndanganModel;
     
     public function __construct(){
         $this->VendorModel = new VendorModel();
         $this->PembayaranModel = new PembayaranModel();
         $this->SeserahanModel = new SeserahanModel();
+        $this->UndanganModel = new UndanganModel();
+        
     }
 
 
@@ -125,6 +128,25 @@ class Menu extends BaseController
             ];
             return view('dashboard/seserahan_form', $data);
         }
+
+        elseif ($menunya == 'Setting Undangan') {
+            
+            $kode_pasangan = $this->session->get('kode_pasangan');
+            $id = $this->request->getVar('id');
+            
+            $data_setting_undangan = $this->UndanganModel->where('kode_pasangan', $kode_pasangan)
+            ->first();
+
+            // dd($data_setting_undangan);
+
+            
+            $data = [
+                'judul'      => $menunya,
+                'data_setting_undangan' => $data_setting_undangan,
+            ];
+            return view('dashboard/setting_undangan', $data);
+        }
+
         else{
             // throw new \CodeIgniter\Exceptions\PageNotFoundException('Menu tidak ditemukan !');
             $data = [

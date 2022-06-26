@@ -140,7 +140,7 @@
         </div>
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
-        <div id="loading_konten"></div>
+        <div id="loading_konten" style="background-color:white;"></div>
         <div id="konten">
 			<?= $this->renderSection('konten') ?>
         </div>
@@ -229,7 +229,7 @@
             data: data+"&kunciku="+kunciku,
             beforeSend: function() {
                 // setting a timeout
-                $('#loading_konten').html('<i class="fas fa-spinner fa-spin"></i> Sedang Memuat Konten ...');
+                $('#loading_konten').html('<h1><i class="fas fa-spinner fa-spin"></i> Sedang Memuat Konten ...</h1>');
             },
             success: function (hasil) {
                 $('#loading_konten').html('')
