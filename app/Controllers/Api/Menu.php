@@ -146,6 +146,23 @@ class Menu extends BaseController
             ];
             return view('dashboard/setting_undangan', $data);
         }
+        elseif ($menunya == 'Desain Undangan') {
+            
+            // $kode_pasangan = $this->session->get('kode_pasangan');
+            // $id = $this->request->getVar('id');
+            
+            // $data_setting_undangan = $this->UndanganModel->where('kode_pasangan', $kode_pasangan)
+            // ->first();
+
+            // dd($data_setting_undangan);
+
+            
+            $data = [
+                'judul'      => $menunya,
+                // 'data_setting_undangan' => $data_setting_undangan,
+            ];
+            return view('dashboard/setting_undangan_desain', $data);
+        }
 
         else{
             // throw new \CodeIgniter\Exceptions\PageNotFoundException('Menu tidak ditemukan !');

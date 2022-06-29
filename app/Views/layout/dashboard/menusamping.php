@@ -30,7 +30,7 @@
             
             <ul class="nav pcoded-inner-navbar " style="display: block;">
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Kelola Menu</label>
+                    <label>Kelola Vendor</label>
                 </li>
 
                 <li class="nav-item">
@@ -45,8 +45,14 @@
                 <li class="nav-item">
                     <a class="nav-link " onclick="menu('Wish List Seserahan')"><span class="pcoded-micon"><i class="fa fa-shopping-cart"></i></span><span class="pcoded-mtext">Wish List Seserahan</span></a>
                 </li>
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Undangan</label>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link " onclick="menu('Setting Undangan')"><span class="pcoded-micon"><i class="fa fa-cogs"></i></span><span class="pcoded-mtext">Setting Undangan</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " onclick="menu('Desain Undangan')"><span class="pcoded-micon"><i class="fa fa-cogs"></i></span><span class="pcoded-mtext">Desain Undangan</span></a>
                 </li>
             </ul>
             

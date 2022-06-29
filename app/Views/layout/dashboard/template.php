@@ -181,6 +181,9 @@
 	<!-- TOASTR -->
 	<script src="assets/toastr/toastr.min.js"></script>
 
+	<!-- WIZARD FORM -->
+	<script src="assets/js/plugins/jquery.bootstrap.wizard.min.js"></script>
+
 <script>
 	function menu(menu) {
 	    $(".pcoded-navbar").removeClass("mob-open")

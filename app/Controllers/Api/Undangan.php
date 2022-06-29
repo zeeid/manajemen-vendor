@@ -2,15 +2,18 @@
 
 namespace App\Controllers\Api; //Nama Folder
 
-use App\Controllers\BaseController;
-use App\Models\UndanganModel;
 use App\Models\VendorModel;
+use App\Models\UndanganModel;
+use App\Controllers\BaseController;
+use App\Models\UndanganDesainModel;
 
 class Undangan extends BaseController
 {
     protected $VendorModel;
+    protected $UndanganDesainModel;
     public function __construct(){
         $this->VendorModel = new UndanganModel();
+        $this->UndanganDesainModel = new UndanganDesainModel();
     }
     
     public function setting_undangan(){
@@ -109,5 +112,101 @@ class Undangan extends BaseController
         }
 
         return json_encode($response);
+    }
+
+    public function desain_undangan(){
+        $kode_pasangan  = $this->session->get('kode_pasangan');
+        $mode           = $this->request->getVar('mode');
+
+        $validasi       = \Config\Services::validation();
+
+        if (!$this->validate([
+            'kunciku' => 'required',
+            'mode' => 'required',
+            'cover_depan' => [
+                'rules'     => 'max_size[cover_depan, 19024]|is_image[cover_depan]|mime_in[cover_depan,image/jpg,image/jpeg,image/png]',
+                'errors'    => [
+                    'max_size'  => 'Gambar kebesaran',
+                    'is_image'  => 'Bukan Gambar Broo',
+                    'mime_in'   => 'Bukan Gambar Broo'
+                ]
+            ],
+        ])) {
+            // echo "TIDAK VALID";
+
+            
+            if(isset($validasi)){
+                // $error_list = $validasi->listErrors();
+
+                // $error_nama = ($validasi->hasError('nama')) ? 'is-invalid' : '';
+                // $error_nama_detail = ($validasi->hasError('nama')) ? $validasi->getError('nama') : '';
+
+                $error_kunciku = ($validasi->hasError('kunciku')) ? 'Token Habis Silahkan Reload Halaman' : '';
+                $error_mode = ($validasi->hasError('mode')) ? 'Modenya apa ?' : '';
+                $error_gambar = ($validasi->hasError('cover_depan')) ? $validasi->getError('cover_depan') : '';
+
+                $data = array(
+                    'status'    => 201,
+                    'e_kunciku' => $error_kunciku, 
+                    'e_mode'    => $error_mode, 
+                    'e_gambar'  => $error_gambar, 
+                    'pesan'     => 'ERROR UPLOAD GAMBARNYA', 
+                );
+                return json_encode($data);
+            }
+            // return redirect()->to('/crud/tambah')->withInput();
+        }
+
+        // ============ SIMPAN FILE ===============
+            $filenya    = $this->request->getFile('cover_depan');
+            // ==== CEK JIKA UPLOAD KOSONG ====
+                if ($filenya->getError() == 4) {
+                    $namafile_random = 'default.jpg';
+                }else{
+
+                    // ==== generate Nama file random  ===
+                    $namafile_random = $filenya->getRandomName();
+                    // ==== PINDAH FILE KE FOLDER ===
+                    $filenya->move('desain',$namafile_random);
+        
+                    // $filenya->move('img');
+                    // ==== AMBIL NAMA FILE Kalau nama file seperti yg diupload ====
+                    // $namafile   = $filenya->getName();
+        
+                    // dd($namafile);
+                }
+        // ============ SIMPAN FILE ===============
+
+        $datanya = [
+            $mode  => $namafile_random,
+        ];
+
+        // dd($datanya);
+
+        $simpan = $this->UndanganDesainModel
+        ->where('kode_pasangan', $kode_pasangan)
+        ->set($datanya)
+        ->update();
+
+        if ($simpan) {
+            $data = array(
+                'status'    => 200,
+                'e_kunciku' => '-', 
+                'e_mode'    => '-', 
+                'e_gambar'  => '-', 
+                'pesan'     => 'BERHASIL UPDATE DATA', 
+            );
+            return json_encode($data);
+        }else{
+            $data = array(
+                'status'    => 201,
+                'e_kunciku' => '-', 
+                'e_mode'    => '-', 
+                'e_gambar'  => '-', 
+                'pesan'     => 'GAGAL UPDATE DATA', 
+            );
+            return json_encode($data);
+        }
+
     }
 }
