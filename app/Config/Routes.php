@@ -40,6 +40,8 @@ $routes->get('/login', 'Auth::index');
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard\Home::index');
 
+$routes->get('/api/test-upload', 'Api\Undangan::UploadTest');
+
 
 $routes->get('/testing', 'Api\Pembayaran::testmodel');
 

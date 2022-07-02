@@ -4,16 +4,20 @@ namespace App\Controllers\Api; //Nama Folder
 
 use App\Models\VendorModel;
 use App\Models\UndanganModel;
+use CodeIgniter\Config\Services;
 use App\Controllers\BaseController;
 use App\Models\UndanganDesainModel;
+use App\Models\UndanganGaleriModel;
 
 class Undangan extends BaseController
 {
     protected $VendorModel;
     protected $UndanganDesainModel;
+    protected $UndanganGaleriModel;
     public function __construct(){
         $this->VendorModel = new UndanganModel();
         $this->UndanganDesainModel = new UndanganDesainModel();
+        $this->UndanganGaleriModel = new UndanganGaleriModel();
     }
     
     public function setting_undangan(){
@@ -215,5 +219,74 @@ class Undangan extends BaseController
             return json_encode($data);
         }
 
+    }
+
+    public function UploadTest(){
+        return view('dashboard/setting_undangan_galeri');
+    }
+
+    public function dropzone(){
+        $kode_pasangan  = $this->session->get('kode_pasangan');
+        // ============ SIMPAN FILE ===============
+        $filenya    = $this->request->getFile('file');
+
+        // dd($filenya);
+        // ==== CEK JIKA UPLOAD KOSONG ====
+            if ($filenya->getError() == 4) {
+                // $namafile_random = 'default.jpg';
+                $data = array(
+                    'status'    => 400,
+                    'e_kunciku' => '-', 
+                    'e_mode'    => '-', 
+                    'e_gambar'  => '-', 
+                    'pesan'     => 'Gambar belum dipilih', 
+                );
+                echo json_encode($data);
+            }else{
+                
+                // ==== generate Nama file random  ===
+                $namafile_random = $filenya->getRandomName();
+                // ==== PINDAH FILE KE FOLDER ===
+                $filenya->move('galeri',$namafile_random);
+                
+                // $filenya->move('img');
+                // ==== AMBIL NAMA FILE Kalau nama file seperti yg diupload ====
+                // $namafile   = $filenya->getName();
+                
+                $datanya = [
+                    'kode_pasangan' => $kode_pasangan,
+                    'gambarnya'     => $namafile_random,
+                ];
+        
+                // dd($datanya);
+        
+                // $simpan = $this->UndanganGaleriModel
+                // ->where('kode_pasangan', $kode_pasangan)
+                // ->set($datanya)
+                // ->update();
+
+                $simpan = $this->UndanganGaleriModel->save($datanya);
+        
+                if ($simpan) {
+                    $data = array(
+                        'status'    => 200,
+                        'e_kunciku' => '-', 
+                        'e_mode'    => '-', 
+                        'e_gambar'  => '-', 
+                        'pesan'     => 'BERHASIL Upload Galeri', 
+                    );
+                    return json_encode($data);
+                }else{
+                    $data = array(
+                        'status'    => 400,
+                        'e_kunciku' => '-', 
+                        'e_mode'    => '-', 
+                        'e_gambar'  => '-', 
+                        'pesan'     => 'GAGAL Upload Galeri #DB', 
+                    );
+                    return json_encode($data);
+                }
+            }
+    // ============ SIMPAN FILE ===============
     }
 }

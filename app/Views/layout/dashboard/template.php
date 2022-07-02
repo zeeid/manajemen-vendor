@@ -21,17 +21,20 @@
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 	<!-- data tables css -->
-	<link rel="stylesheet" href="assets/css/plugins/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="<?=base_url();?>/assets/css/plugins/dataTables.bootstrap4.min.css">
     <!-- vendor css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?=base_url();?>/assets/css/style.css">
 	
-    <link rel="stylesheet" href="assets/font-awesome.min.css"/>
+    <link rel="stylesheet" href="<?=base_url();?>/assets/font-awesome.min.css"/>
     <script src="assets/sweetalert.min.js" ></script>
 	<!-- select2 css -->
-    <link rel="stylesheet" href="assets/css/plugins/select2.min.css">
+    <link rel="stylesheet" href="<?=base_url();?>/assets/css/plugins/select2.min.css">
 
 	<!-- TOASTR -->
-	<link rel="stylesheet" href="assets/toastr/toastr.min.css">
+	<link rel="stylesheet" href="<?=base_url();?>/assets/toastr/toastr.min.css">
+
+	<!-- fileupload-custom css -->
+	<!-- <link rel="stylesheet" href="<?=base_url();?>/assets/css/plugins/dropzone.min.css"> -->
 
     
 	<style>
@@ -151,38 +154,40 @@
 <!-- [ Main Content ] end -->
 
     <!-- Required Js -->
-    <script src="assets/js/vendor-all.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-    <script src="assets/js/ripple.js"></script>
-    <script src="assets/js/pcoded.min.js"></script>
-	<!-- <script src="assets/js/menu-setting.min.js"></script> -->
+    <script src="<?=base_url();?>/assets/js/vendor-all.min.js"></script>
+    <script src="<?=base_url();?>/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="<?=base_url();?>/assets/js/ripple.js"></script>
+    <script src="<?=base_url();?>/assets/js/pcoded.min.js"></script>
+	<!-- <script src="<?=base_url();?>/assets/js/menu-setting.min.js"></script> -->
 
 	<!-- jquery-validation Js -->
-	<script src="assets/js/plugins/jquery.validate.min.js"></script>
+	<script src="<?=base_url();?>/assets/js/plugins/jquery.validate.min.js"></script>
 	<!-- form-picker-custom Js -->
-	<script src="assets/js/pages/form-validation.js"></script>
+	<script src="<?=base_url();?>/assets/js/pages/form-validation.js"></script>
 	<!-- notification Js -->
-	<script src="assets/js/plugins/bootstrap-notify.min.js"></script>
-	<script src="assets/js/pages/ac-notification.js"></script>
+	<script src="<?=base_url();?>/assets/js/plugins/bootstrap-notify.min.js"></script>
+	<script src="<?=base_url();?>/assets/js/pages/ac-notification.js"></script>
 	<!-- sweet alert Js -->
-	<script src="assets/js/plugins/sweetalert.min.js"></script>
-	<script src="assets/js/pages/ac-alert.js"></script>
+	<script src="<?=base_url();?>/assets/js/plugins/sweetalert.min.js"></script>
+	<script src="<?=base_url();?>/assets/js/pages/ac-alert.js"></script>
 
 	<!-- Apex Chart -->
-	<!-- <script src="assets/js/plugins/apexcharts.min.js"></script> -->
+	<!-- <script src="<?=base_url();?>/assets/js/plugins/apexcharts.min.js"></script> -->
 	<!-- custom-chart js -->
-	<!-- <script src="assets/js/pages/dashboard-main.js"></script> -->
+	<!-- <script src="<?=base_url();?>/assets/js/pages/dashboard-main.js"></script> -->
 
-	<script src="assets/Chart.min.js"></script>
-	<script src="assets/chartjs-plugin-datalabels@0.7.0"></script>
+	<script src="<?=base_url();?>/assets/Chart.min.js"></script>
+	<script src="<?=base_url();?>/assets/chartjs-plugin-datalabels@0.7.0"></script>
 
 	<!-- select2 Js -->
-	<script src="assets/js/plugins/select2.full.min.js"></script>
+	<script src="<?=base_url();?>/assets/js/plugins/select2.full.min.js"></script>
 	<!-- TOASTR -->
-	<script src="assets/toastr/toastr.min.js"></script>
+	<script src="<?=base_url();?>/assets/toastr/toastr.min.js"></script>
 
 	<!-- WIZARD FORM -->
-	<script src="assets/js/plugins/jquery.bootstrap.wizard.min.js"></script>
+	<script src="<?=base_url();?>/assets/js/plugins/jquery.bootstrap.wizard.min.js"></script>
+
+	<!-- <script src="<?=base_url();?>/assets/js/plugins/dropzone-amd-module.min.js"></script> -->
 
 <script>
 	function menu(menu) {
