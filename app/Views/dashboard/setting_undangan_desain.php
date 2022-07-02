@@ -5,7 +5,8 @@
 </style>
 
 <?php 
-    // dd($listseserahan);
+    // dd($undangan_desain['cover_depan']);
+    $default_img = 'https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg';
 ?>
 
 <div class="row" style="margin-top: -25px!important;">
@@ -58,23 +59,23 @@
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane show active" id="progress-t-tab1">
-                            <form id="cover_depan">
+                            <form id="cover_depan" enctype="multipart/form-data" method="post">
                                 <input type="hidden" id="<?= csrf_token() ?>" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                                 <input type="hidden" name="mode" value="cover_depan">
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Cover Depan</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?= isset($undangan_desain['cover_depan']) ? "desain/".$undangan_desain['cover_depan'] : $default_img?>"  style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="cover_depan" id="cover_depan">
+                                            <input type="file" required name="cover_depan" id="cover_depan">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('cover_depan')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>
@@ -87,16 +88,16 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Hiasan Depan</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['hiasan_depan']) ? "desain/".$undangan_desain['hiasan_depan'] : $default_img;?>" alt="Cover Depan" style="height: 300px;background-color: #0e0e68;border-radius: 13px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="hiasan_depan" id="hiasan_depan">
+                                            <input type="file" required name="hiasan_depan" id="hiasan_depan">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('hiasan_depan')" class="btn btn-success">Simpan</button>
                                         </div>
                                 </div>
                             </form>
@@ -108,16 +109,16 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Cover Dalam</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['cover_dalam']) ? "desain/".$undangan_desain['cover_dalam'] : $default_img;?>" alt="Cover Depan" style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="file" name="cover_dalam" id="cover_dalam">
+                                        <input type="file" required name="cover_dalam" id="cover_dalam">
                                     </div>
                                     <div class="col-md-3 col-sm-3">
-                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <button type="button" onclick="simpan_desain('cover_dalam')" class="btn btn-success">Simpan</button>
                                     </div>
                                 </div>
                             </form>
@@ -129,17 +130,17 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Logo Depan</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['logo_depan']) ? "desain/".$undangan_desain['logo_depan'] : $default_img;?>" alt="Cover Depan" style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="logo_depan" id="logo_depan">
+                                            <input type="file" required name="logo_depan" id="logo_depan">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('logo_depan')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>
@@ -152,17 +153,17 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Hiasan Atas</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['hiasan_atas']) ? "desain/".$undangan_desain['hiasan_atas'] : $default_img;?>" alt="Cover Depan" style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="hiasan_atas" id="hiasan_atas">
+                                            <input type="file" required name="hiasan_atas" id="hiasan_atas">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('hiasan_atas')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>
@@ -175,17 +176,17 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Hiasan Bawah</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['hiasan_bawah']) ? "desain/".$undangan_desain['hiasan_bawah'] : $default_img;?>" alt="Cover Depan" style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="hiasan_bawah" id="hiasan_bawah">
+                                            <input type="file" required name="hiasan_bawah" id="hiasan_bawah">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('hiasan_bawah')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>
@@ -198,17 +199,17 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Pengantin Pria</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['pengantin_p']) ? "desain/".$undangan_desain['pengantin_p'] : $default_img;?>" alt="Cover Depan" style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="pengantin_p" id="pengantin_p">
+                                            <input type="file" required name="pengantin_p" id="pengantin_p">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('pengantin_p')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>
@@ -221,17 +222,17 @@
                                 <div class="form-group row">
                                     <label for="progress-t-email" class="col-sm-3 col-form-label">Tersimpan Pengantin Wanita</label>
                                     <div class="col-sm-9">
-                                        <img src="https://i.pinimg.com/originals/55/64/58/5564585aeac66ac1373cc7181703ba9a.jpg" alt="Cover Depan" style="height: 300px;">
+                                        <img src="<?=isset($undangan_desain['pengantin_w']) ? "desain/".$undangan_desain['pengantin_w'] : $default_img;?>" alt="Cover Depan" style="height: 300px;">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     
                                         <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="file" name="pengantin_w" id="pengantin_w">
+                                            <input type="file" required name="pengantin_w" id="pengantin_w">
                                         </div>
                                         <div class="col-md-3 col-sm-3">
-                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                            <button type="button" onclick="simpan_desain('pengantin_w')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>
@@ -339,78 +340,12 @@
 <script>
     var kunciku = $("#kunciku").val();
 
-    $("#cover_depan").submit(function(e) {
-        e.preventDefault();
-        // var data = $("#cover_depan").serialize();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            // data: formData+"&kunciku="+kunciku+"&mode=cover_depan",
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
+    function simpan_desain(idnya) {
+        
+        // e.preventDefault();
+        // var formData = new FormData(this);
+        var formData = new FormData($('#'+idnya)[0]);
     
-    $("#hiasan_depan").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
         $.ajax({
             type: "POST",
             url: "api/undangan/desain_undangan",
@@ -441,13 +376,13 @@
             success: function(hasil) {
                 toastr.remove()
                 toastr.clear()
-
+    
                 $("#debug").html(hasil)
                 const obj = JSON.parse(hasil);
                 var status = obj.status
                 var pesan = obj.pesan
                 var e_gambar = obj.e_gambar
-
+    
                 if (status == 200) {
                     swal({
                             title: "Sukses",
@@ -471,401 +406,6 @@
                 // $(placeholder).removeClass('loading');
             },
         });
-    });
-
-    $("#cover_dalam").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
-
-    $("#logo_depan").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
-
-    $("#hiasan_atas").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
-
-    $("#hiasan_bawah").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
-
-    $("#pengantin_p").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
-
-    $("#pengantin_w").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type: "POST",
-            url: "api/undangan/desain_undangan",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            beforeSend: function() {
-                toastr["info"]("Mohon Tunggu..", "Loading")
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "30011111",
-                    "hideDuration": "100011111",
-                    "timeOut": "500011111",
-                    "extendedTimeOut": "100011111",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-            },
-            success: function(hasil) {
-                toastr.remove()
-                toastr.clear()
-
-                $("#debug").html(hasil)
-                const obj = JSON.parse(hasil);
-                var status = obj.status
-                var pesan = obj.pesan
-                var e_gambar = obj.e_gambar
-
-                if (status == 200) {
-                    swal({
-                            title: "Sukses",
-                            text: pesan,
-                            icon: "success",
-                            buttons: [false, 'OKE'],
-                            dangerMode: false,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) {
-                                // menu('Wish List Seserahan')
-                            }
-                        });
-                }else{
-                    swal("ERROR", pesan+' | '+e_gambar, "error");
-                }
-            },
-            error: function(xhr) { // if error occured
-                alert("statusText : \n" + xhr.statusText + "\n\n responseText: \n" + xhr.responseText);
-                // $(placeholder).append(xhr.statusText + xhr.responseText);
-                // $(placeholder).removeClass('loading');
-            },
-        });
-    });
+    }
+    
 </script>

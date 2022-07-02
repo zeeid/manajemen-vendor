@@ -148,20 +148,61 @@ class Menu extends BaseController
         }
         elseif ($menunya == 'Desain Undangan') {
             
-            // $kode_pasangan = $this->session->get('kode_pasangan');
-            // $id = $this->request->getVar('id');
-            
-            // $data_setting_undangan = $this->UndanganModel->where('kode_pasangan', $kode_pasangan)
-            // ->first();
+            $kode_pasangan = $this->session->get('kode_pasangan');
 
-            // dd($data_setting_undangan);
+            $get_desain = $this->db->table('undangan_desain')
+            ->where('kode_pasangan', $kode_pasangan)
+            ->get()
+            ->getResultArray()
+            ;
 
+            $undangan_desain = [
+                'cover_depan' => $get_desain[0]['cover_depan'], 
+                'hiasan_depan'=> $get_desain[0]['hiasan_depan'], 
+                'cover_dalam' => $get_desain[0]['cover_dalam'], 
+                'logo_depan'  => $get_desain[0]['logo_depan'], 
+                
+                'hiasan_atas' => $get_desain[0]['hiasan_atas'], 
+                'hiasan_bawah'=> $get_desain[0]['hiasan_bawah'], 
+                
+                'pengantin_p' => $get_desain[0]['pengantin_p'], 
+                'pengantin_w' => $get_desain[0]['pengantin_w'], 
+            ];
             
             $data = [
-                'judul'      => $menunya,
-                // 'data_setting_undangan' => $data_setting_undangan,
+                'judul'           => $menunya,
+                'undangan_desain' => $undangan_desain,
             ];
             return view('dashboard/setting_undangan_desain', $data);
+        }
+        elseif ($menunya == 'Galeri Undangan') {
+            
+            $kode_pasangan = $this->session->get('kode_pasangan');
+
+            // $get_desain = $this->db->table('undangan_desain')
+            // ->where('kode_pasangan', $kode_pasangan)
+            // ->get()
+            // ->getResultArray()
+            // ;
+
+            // $undangan_desain = [
+            //     'cover_depan' => $get_desain[0]['cover_depan'], 
+            //     'hiasan_depan'=> $get_desain[0]['hiasan_depan'], 
+            //     'cover_dalam' => $get_desain[0]['cover_dalam'], 
+            //     'logo_depan'  => $get_desain[0]['logo_depan'], 
+                
+            //     'hiasan_atas' => $get_desain[0]['hiasan_atas'], 
+            //     'hiasan_bawah'=> $get_desain[0]['hiasan_bawah'], 
+                
+            //     'pengantin_p' => $get_desain[0]['pengantin_p'], 
+            //     'pengantin_w' => $get_desain[0]['pengantin_w'], 
+            // ];
+            
+            $data = [
+                'judul'           => $menunya,
+                // 'undangan_desain' => $undangan_desain,
+            ];
+            return view('dashboard/setting_undangan_galeri', $data);
         }
 
         else{

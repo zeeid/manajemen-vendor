@@ -121,29 +121,28 @@ class Undangan extends BaseController
         $validasi       = \Config\Services::validation();
 
         if (!$this->validate([
-            'kunciku' => 'required',
-            'mode' => 'required',
-            'cover_depan' => [
-                'rules'     => 'max_size[cover_depan, 19024]|is_image[cover_depan]|mime_in[cover_depan,image/jpg,image/jpeg,image/png]',
-                'errors'    => [
-                    'max_size'  => 'Gambar kebesaran',
-                    'is_image'  => 'Bukan Gambar Broo',
-                    'mime_in'   => 'Bukan Gambar Broo'
+            "kunciku" => "required",
+            "mode" => "required",
+            "$mode" => [
+                "rules"     => "max_size[$mode, 19024]|is_image[$mode]|mime_in[$mode,image/jpg,image/jpeg,image/png]",
+                "errors"    => [
+                    "max_size"  => "Gambar kebesaran",
+                    "is_image"  => "Bukan Gambar Broo",
+                    "mime_in"   => "Bukan Gambar Broo"
                 ]
             ],
         ])) {
             // echo "TIDAK VALID";
-
+            // dd("TDK VALIS");
             
             if(isset($validasi)){
                 // $error_list = $validasi->listErrors();
-
                 // $error_nama = ($validasi->hasError('nama')) ? 'is-invalid' : '';
                 // $error_nama_detail = ($validasi->hasError('nama')) ? $validasi->getError('nama') : '';
 
                 $error_kunciku = ($validasi->hasError('kunciku')) ? 'Token Habis Silahkan Reload Halaman' : '';
                 $error_mode = ($validasi->hasError('mode')) ? 'Modenya apa ?' : '';
-                $error_gambar = ($validasi->hasError('cover_depan')) ? $validasi->getError('cover_depan') : '';
+                $error_gambar = ($validasi->hasError($mode)) ? $validasi->getError($mode) : '';
 
                 $data = array(
                     'status'    => 201,
@@ -158,10 +157,18 @@ class Undangan extends BaseController
         }
 
         // ============ SIMPAN FILE ===============
-            $filenya    = $this->request->getFile('cover_depan');
+            $filenya    = $this->request->getFile($mode);
             // ==== CEK JIKA UPLOAD KOSONG ====
                 if ($filenya->getError() == 4) {
-                    $namafile_random = 'default.jpg';
+                    // $namafile_random = 'default.jpg';
+                    $data = array(
+                        'status'    => 201,
+                        'e_kunciku' => '-', 
+                        'e_mode'    => '-', 
+                        'e_gambar'  => '-', 
+                        'pesan'     => 'Gambar belum dipilih', 
+                    );
+                    return json_encode($data);
                 }else{
 
                     // ==== generate Nama file random  ===
