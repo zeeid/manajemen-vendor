@@ -289,4 +289,54 @@ class Undangan extends BaseController
             }
     // ============ SIMPAN FILE ===============
     }
+
+    public function listgaleri(){
+        $kode_pasangan  = $this->session->get('kode_pasangan');
+        if ($kode_pasangan != '' || $kode_pasangan != null) {
+            $listgaleri = $this->UndanganGaleriModel->where('kode_pasangan', $kode_pasangan)->findAll();
+    
+            $data = [
+                'listgaleri' => $listgaleri,
+            ];
+    
+            return view('dashboard/tabel/tabel_galeri',$data);
+        }
+    }
+
+    public function hapusgaleri(){
+        $kode_pasangan  = $this->session->get('kode_pasangan');
+        $id             = $this->request->getVar('id');
+
+        if ($kode_pasangan != '' || $kode_pasangan != null) {
+            $cek = $this->db->query("SELECT * from undangan_galeri WHERE kode_pasangan='$kode_pasangan' AND gambarnya='$id'")->getNumRows();
+
+            if ($cek > 0) {
+                $hapus = $this->UndanganGaleriModel
+                ->where('kode_pasangan', $kode_pasangan)
+                ->where('gambarnya', $id)
+                ->delete();
+
+                if ($hapus == 1) {
+                    $response = array(
+                        'status'    => 200, 
+                        'pesan'     => 'Berhasil menghapus Galeri', 
+                    );
+                }else{
+                    $response = array(
+                        'status'    => 201, 
+                        'pesan'     => 'Gagal menghapus Galeri', 
+                    );
+                    
+                }
+            }else{
+                $response = array(
+                    'status'    => 201, 
+                    'pesan'     => 'Galeri Tidak ditemukan untuk dihapus', 
+                );
+
+            }
+
+            return json_encode($response);
+        }
+    }
 }
