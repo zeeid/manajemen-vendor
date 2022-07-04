@@ -57,6 +57,9 @@
                 <li class="nav-item">
                     <a class="nav-link " onclick="menu('Galeri Undangan')"><span class="pcoded-micon"><i class="fa fa-cogs"></i></span><span class="pcoded-mtext">Galeri Undangan</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " onclick="menu('Tamu Undangan')"><span class="pcoded-micon"><i class="fa fa-cogs"></i></span><span class="pcoded-mtext">Tamu Undangan</span></a>
+                </li>
             </ul>
             
             <ul class="nav pcoded-inner-navbar " style="display: none;">

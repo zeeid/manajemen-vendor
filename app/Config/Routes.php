@@ -69,6 +69,10 @@ $routes->post('/api/undangan/setting_undangan', 'Api\Undangan::setting_undangan'
 $routes->post('/api/undangan/desain_undangan', 'Api\Undangan::desain_undangan');
 $routes->post('/api/undangan/listgaleri', 'Api\Undangan::listgaleri');
 $routes->post('/api/undangan/hapusgaleri', 'Api\Undangan::hapusgaleri');
+$routes->post('/api/undangan/upload-tamu', 'Api\UndanganTamu::simpanExcel');
+$routes->post('/api/undangan/tambah-tamu', 'Api\UndanganTamu::tambah_tamu');
+$routes->post('/api/undangan/listtamu', 'Api\UndanganTamu::listtamu');
+$routes->post('/api/undangan/hapus_tamu', 'Api\UndanganTamu::hapus_tamu');
 
 
 

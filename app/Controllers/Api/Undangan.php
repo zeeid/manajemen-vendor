@@ -339,4 +339,11 @@ class Undangan extends BaseController
             return json_encode($response);
         }
     }
+
+    public function upload_tamu(){
+        $kode_pasangan  = $this->session->get('kode_pasangan');
+        if ($kode_pasangan != '' || $kode_pasangan != null) {
+            
+        }
+    }
 }
