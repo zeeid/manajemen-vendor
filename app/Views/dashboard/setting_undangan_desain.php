@@ -52,6 +52,10 @@
                                 data-toggle="tab">Pengantin Wanita<span class="ripple ripple-animate"
                                     style="height: 130.717px; width: 130.717px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(70, 128, 255) none repeat scroll 0% 0%; opacity: 0.4; top: -42.2585px; left: -49.6418px;"></span></a>
                         </li>
+                        <li class="nav-item"><a href="#progress-t-tab9" class="nav-link has-ripple"
+                                data-toggle="tab">Background Musik<span class="ripple ripple-animate"
+                                    style="height: 130.717px; width: 130.717px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(70, 128, 255) none repeat scroll 0% 0%; opacity: 0.4; top: -42.2585px; left: -49.6418px;"></span></a>
+                        </li>
                     </ul>
                     <div id="bar" class="bt-wizard progress mb-3" style="height:6px">
                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0"
@@ -233,6 +237,29 @@
                                         </div>
                                         <div class="col-md-3 col-sm-3">
                                             <button type="button" onclick="simpan_desain('pengantin_w')" class="btn btn-success">Simpan</button>
+                                        </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="progress-t-tab9">
+                            <form id="background_musik" method="post">
+                                <input type="hidden" id="<?= csrf_token() ?>" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                                <input type="hidden" name="mode" value="background_musik">
+                                <div class="form-group row">
+                                    <label for="progress-t-email" class="col-sm-3 col-form-label">Background Musik Tersimpan :</label>
+                                    <div class="col-sm-9">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    
+                                        <label for="progress-t-name" class="col-sm-3 col-form-label">Upload</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="file" required name="background_musik" id="background_musik">
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <button type="button" onclick="simpan_desain('background_musik','musik')" class="btn btn-success">Simpan</button>
                                         </div>
                                     
                                 </div>

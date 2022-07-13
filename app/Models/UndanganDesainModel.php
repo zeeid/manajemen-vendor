@@ -25,6 +25,7 @@ class UndanganDesainModel extends Model
         'hiasan_bawah',
         'pengantin_p',
         'pengantin_w',
+        'background_musik',
         
     ];
 

@@ -124,18 +124,36 @@ class Undangan extends BaseController
 
         $validasi       = \Config\Services::validation();
 
-        if (!$this->validate([
-            "kunciku" => "required",
-            "mode" => "required",
-            "$mode" => [
-                "rules"     => "max_size[$mode, 19024]|is_image[$mode]|mime_in[$mode,image/jpg,image/jpeg,image/png]",
-                "errors"    => [
-                    "max_size"  => "Gambar kebesaran",
-                    "is_image"  => "Bukan Gambar Broo",
-                    "mime_in"   => "Bukan Gambar Broo"
-                ]
-            ],
-        ])) {
+        if ($mode=='background_musik') {
+            $rulenya = [
+                "kunciku" => "required",
+                "mode" => "required",
+                "$mode" => [
+                    "rules"     => "max_size[$mode, 19024]|mime_in[$mode,audio/mpeg,audio/mpg,audio/mpeg3,audio/mp3]",
+                    "errors"    => [
+                        "max_size"  => "File Musik kebesaran",
+                        "mime_in"   => "Bukan Musik MP3 Broo"
+                    ]
+                ],
+            ];
+        }else{
+            $rulenya = [
+                "kunciku" => "required",
+                "mode" => "required",
+                "$mode" => [
+                    "rules"     => "max_size[$mode, 19024]|is_image[$mode]|mime_in[$mode,image/jpg,image/jpeg,image/png]",
+                    "errors"    => [
+                        "max_size"  => "Gambar kebesaran",
+                        "is_image"  => "Bukan Gambar Broo",
+                        "mime_in"   => "Bukan Gambar Broo"
+                    ]
+                ],
+            ];
+        }
+
+        // dd($rulenya);
+
+        if (!$this->validate($rulenya)) {
             // echo "TIDAK VALID";
             // dd("TDK VALIS");
             
@@ -153,7 +171,7 @@ class Undangan extends BaseController
                     'e_kunciku' => $error_kunciku, 
                     'e_mode'    => $error_mode, 
                     'e_gambar'  => $error_gambar, 
-                    'pesan'     => 'ERROR UPLOAD GAMBARNYA', 
+                    'pesan'     => 'ERROR UPLOAD FILE', 
                 );
                 return json_encode($data);
             }
@@ -162,6 +180,8 @@ class Undangan extends BaseController
 
         // ============ SIMPAN FILE ===============
             $filenya    = $this->request->getFile($mode);
+
+            // dd($filenya);
             // ==== CEK JIKA UPLOAD KOSONG ====
                 if ($filenya->getError() == 4) {
                     // $namafile_random = 'default.jpg';
@@ -170,7 +190,7 @@ class Undangan extends BaseController
                         'e_kunciku' => '-', 
                         'e_mode'    => '-', 
                         'e_gambar'  => '-', 
-                        'pesan'     => 'Gambar belum dipilih', 
+                        'pesan'     => 'FILE belum dipilih', 
                     );
                     return json_encode($data);
                 }else{
